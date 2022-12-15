@@ -3,7 +3,7 @@ package memorycache
 import (
 	"context"
 	"errors"
-	"github.com/qit-team/snow-core/cache"
+	"github.com/bigtree8/flow-core/cache"
 	"testing"
 	"time"
 )

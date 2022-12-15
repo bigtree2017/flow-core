@@ -7,9 +7,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/qit-team/snow-core/aliyunmq"
-	"github.com/qit-team/snow-core/config"
-	"github.com/qit-team/snow-core/queue"
+	"github.com/bigtree8/flow-core/aliyunmq"
+	"github.com/bigtree8/flow-core/config"
+	"github.com/bigtree8/flow-core/queue"
 )
 
 var q queue.Queue

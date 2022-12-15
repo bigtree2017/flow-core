@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/qit-team/snow-core/cache"
+	"github.com/bigtree8/flow-core/cache"
 	"strconv"
 	"sync"
 	"time"
@@ -34,14 +34,14 @@ func init() {
 	ErrWrongDataType = errors.New("wrong data type")
 }
 
-//实例模式
+// 实例模式
 func newMemoryCache() cache.Cache {
 	m := new(MemoryCache)
 	m.items = make(map[string]Item)
 	return m
 }
 
-//单例模式
+// 单例模式
 func GetMemoryCache(diName string) cache.Cache {
 	key := diName
 	mu.RLock()

@@ -4,10 +4,10 @@ import (
 	"errors"
 	"fmt"
 	"github.com/aliyunmq/mq-http-go-sdk"
-	"github.com/qit-team/snow-core/config"
+	"github.com/bigtree8/flow-core/config"
 )
 
-//依赖注入用的函数
+// 依赖注入用的函数
 func NewAliyunMqClient(mqConfig config.AliyunMqConfig) (client mq_http_sdk.MQClient, err error) {
 	// 初始化aliyunmq的 client
 	defer func() {

@@ -2,10 +2,10 @@ package server
 
 import (
 	"fmt"
-	"github.com/qit-team/snow-core/config"
-	"github.com/qit-team/snow-core/queue"
-	"github.com/qit-team/snow-core/queue/redisqueue"
-	"github.com/qit-team/snow-core/redis"
+	"github.com/bigtree8/flow-core/config"
+	"github.com/bigtree8/flow-core/queue"
+	"github.com/bigtree8/flow-core/queue/redisqueue"
+	"github.com/bigtree8/flow-core/redis"
 	"github.com/qit-team/work"
 	"sync"
 	"testing"

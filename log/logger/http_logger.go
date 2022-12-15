@@ -2,7 +2,7 @@ package logger
 
 import (
 	"context"
-	"github.com/qit-team/snow-core/http/ctxkit"
+	"github.com/bigtree8/flow-core/http/ctxkit"
 	"github.com/sirupsen/logrus"
 	"os"
 )
@@ -16,13 +16,13 @@ type withField struct {
 	Value interface{}
 }
 
-//此结构的数据将会在挂靠到日志的一级键中体现
-//demo: logger.Info(ctx, "curl", NewWithFiled("key1", "value1"), NewWithFiled("key2", "value2"), "msg1", "msg2")
+// 此结构的数据将会在挂靠到日志的一级键中体现
+// demo: logger.Info(ctx, "curl", NewWithFiled("key1", "value1"), NewWithFiled("key2", "value2"), "msg1", "msg2")
 func NewWithField(key string, value interface{}) *withField {
 	return &withField{Key: key, Value: value}
 }
 
-//批量
+// 批量
 func BatchNewWithField(data map[string]interface{}) (arr []*withField) {
 	for k, v := range data {
 		arr = append(arr, NewWithField(k, v))
@@ -122,7 +122,7 @@ func Panic(c context.Context, logType string, msg ...interface{}) {
 	GetLogger().WithFields(data).Panic(newMsg...)
 }
 
-//将日志消息分裂
+// 将日志消息分裂
 func splitMsg(msg []interface{}) (withFields []*withField, newMsg []interface{}) {
 	for _, v := range msg {
 		switch v.(type) {

@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/qit-team/snow-core/command"
+	"github.com/bigtree8/flow-core/command"
 )
 
 // Execute one-time command

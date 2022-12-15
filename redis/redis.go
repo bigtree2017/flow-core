@@ -3,8 +3,8 @@ package redis
 import (
 	"errors"
 	"fmt"
+	"github.com/bigtree8/flow-core/config"
 	goredis "github.com/go-redis/redis/v8"
-	"github.com/qit-team/snow-core/config"
 	"time"
 )
 
@@ -24,7 +24,7 @@ type Options struct {
 	WriteTimeout   time.Duration
 }
 
-//redis连接池实例，不对外暴露，通过redis_service_provider实现依赖注入和资源获取
+// redis连接池实例，不对外暴露，通过redis_service_provider实现依赖注入和资源获取
 func NewRedisClient(redisConf config.RedisConfig) (*goredis.Client, error) {
 	if redisConf.Master.Host == "" {
 		return nil, errors.New("redis config is empty")
@@ -38,7 +38,7 @@ func NewRedisClient(redisConf config.RedisConfig) (*goredis.Client, error) {
 	return rdb, nil
 }
 
-//redis连接池实例，不对外暴露，通过redis_service_provider实现依赖注入和资源获取
+// redis连接池实例，不对外暴露，通过redis_service_provider实现依赖注入和资源获取
 func NewClusterRedisClient(redisConf config.RedisConfig) (*goredis.ClusterClient, error) {
 	if redisConf.Master.Host == "" {
 		return nil, errors.New("redis config is empty")

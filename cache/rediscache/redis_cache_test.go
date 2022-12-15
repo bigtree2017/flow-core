@@ -3,10 +3,10 @@ package rediscache
 import (
 	"context"
 	"fmt"
-	"github.com/qit-team/snow-core/cache"
-	"github.com/qit-team/snow-core/config"
-	"github.com/qit-team/snow-core/redis"
-	"github.com/qit-team/snow-core/utils"
+	"github.com/bigtree8/flow-core/cache"
+	"github.com/bigtree8/flow-core/config"
+	"github.com/bigtree8/flow-core/redis"
+	"github.com/bigtree8/flow-core/utils"
 	"testing"
 	"time"
 )

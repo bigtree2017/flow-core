@@ -2,9 +2,9 @@ package server
 
 import (
 	"fmt"
+	"github.com/bigtree8/flow-core/config"
 	"github.com/fvbock/endless"
 	"github.com/gin-gonic/gin"
-	"github.com/qit-team/snow-core/config"
 	"strconv"
 	"syscall"
 )

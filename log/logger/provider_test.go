@@ -2,9 +2,9 @@ package logger
 
 import (
 	"fmt"
+	"github.com/bigtree8/flow-core/config"
+	"github.com/bigtree8/flow-core/http/ctxkit"
 	"github.com/gin-gonic/gin"
-	"github.com/qit-team/snow-core/config"
-	"github.com/qit-team/snow-core/http/ctxkit"
 	"testing"
 )
 

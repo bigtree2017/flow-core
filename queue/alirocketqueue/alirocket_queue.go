@@ -8,9 +8,9 @@ import (
 	"time"
 
 	mq_http_sdk "github.com/aliyunmq/mq-http-go-sdk"
+	"github.com/bigtree8/flow-core/aliyunmq"
+	"github.com/bigtree8/flow-core/queue"
 	"github.com/gogap/errors"
-	"github.com/qit-team/snow-core/aliyunmq"
-	"github.com/qit-team/snow-core/queue"
 )
 
 const (
@@ -26,7 +26,7 @@ type AliyunMq struct {
 	client mq_http_sdk.MQClient
 }
 
-//new实例
+// new实例
 func newAliyunMq(diName string) queue.Queue {
 	m := new(AliyunMq)
 	m.client = aliyunmq.GetAliyunMq(diName)
@@ -34,7 +34,7 @@ func newAliyunMq(diName string) queue.Queue {
 	return m
 }
 
-//单例模式
+// 单例模式
 func GetAliyunRocketQueue(diName string) queue.Queue {
 	key := diName
 	mu.RLock()

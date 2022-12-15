@@ -2,8 +2,8 @@ package cache
 
 import (
 	"fmt"
-	"github.com/qit-team/snow-core/config"
-	"github.com/qit-team/snow-core/redis"
+	"github.com/bigtree8/flow-core/config"
+	"github.com/bigtree8/flow-core/redis"
 	"testing"
 )
 

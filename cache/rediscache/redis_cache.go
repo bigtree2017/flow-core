@@ -2,9 +2,9 @@ package rediscache
 
 import (
 	"context"
+	"github.com/bigtree8/flow-core/cache"
+	"github.com/bigtree8/flow-core/redis"
 	goredis "github.com/go-redis/redis/v8"
-	"github.com/qit-team/snow-core/cache"
-	"github.com/qit-team/snow-core/redis"
 	"sync"
 	"time"
 )
@@ -18,14 +18,14 @@ type RedisCache struct {
 	client *goredis.Client
 }
 
-//实例模式
+// 实例模式
 func newRedisCache(diName string) cache.Cache {
 	m := new(RedisCache)
 	m.client = redis.GetRedis(diName)
 	return m
 }
 
-//单例模式
+// 单例模式
 func GetRedisCache(diName string) cache.Cache {
 	key := diName
 	mu.RLock()

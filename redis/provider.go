@@ -3,10 +3,10 @@ package redis
 import (
 	"errors"
 	"fmt"
+	"github.com/bigtree8/flow-core/config"
+	"github.com/bigtree8/flow-core/helper"
+	"github.com/bigtree8/flow-core/kernel/container"
 	goredis "github.com/go-redis/redis/v8"
-	"github.com/qit-team/snow-core/config"
-	"github.com/qit-team/snow-core/helper"
-	"github.com/qit-team/snow-core/kernel/container"
 	"sync"
 )
 
@@ -56,7 +56,7 @@ func (p *provider) Register(args ...interface{}) (err error) {
 	return
 }
 
-//注册过的别名
+// 注册过的别名
 func (p *provider) Provides() []string {
 	p.mu.RLock()
 	defer p.mu.RUnlock()
@@ -64,7 +64,7 @@ func (p *provider) Provides() []string {
 	return helper.MapToArray(p.mp)
 }
 
-//释放资源
+// 释放资源
 func (p *provider) Close() error {
 	arr := p.Provides()
 	for _, k := range arr {
@@ -76,7 +76,7 @@ func (p *provider) Close() error {
 	return nil
 }
 
-//注入单例
+// 注入单例
 func setSingleton(diName string, conf config.RedisConfig) (ins *goredis.Client, err error) {
 	ins, err = NewRedisClient(conf)
 	if err != nil {
@@ -88,7 +88,7 @@ func setSingleton(diName string, conf config.RedisConfig) (ins *goredis.Client, 
 	return
 }
 
-//获取单例
+// 获取单例
 func getSingleton(diName string, lazy bool) *goredis.Client {
 	rc := container.App.GetSingleton(diName)
 	if rc != nil {
@@ -112,13 +112,13 @@ func getSingleton(diName string, lazy bool) *goredis.Client {
 	return ins
 }
 
-//外部通过注入别名获取资源，解耦资源的关系
+// 外部通过注入别名获取资源，解耦资源的关系
 func GetRedis(args ...string) *goredis.Client {
 	diName := helper.GetDiName(Pr.dn, args...)
 	return getSingleton(diName, true)
 }
 
-//注入单例
+// 注入单例
 func setClusterSingleton(diName string, conf config.RedisConfig) (ins *goredis.ClusterClient, err error) {
 	ins, err = NewClusterRedisClient(conf)
 	if err == nil {
@@ -127,7 +127,7 @@ func setClusterSingleton(diName string, conf config.RedisConfig) (ins *goredis.C
 	return
 }
 
-//获取单例
+// 获取单例
 func getClusterSingleton(diName string, lazy bool) *goredis.ClusterClient {
 	rc := container.App.GetSingleton(diName)
 	if rc != nil {
@@ -151,7 +151,7 @@ func getClusterSingleton(diName string, lazy bool) *goredis.ClusterClient {
 	return ins
 }
 
-//获取集群模式redisClient
+// 获取集群模式redisClient
 func GetClusterRedis(args ...string) *goredis.ClusterClient {
 	diName := helper.GetDiName(Pr.dn, args...)
 	return getClusterSingleton(diName, true)

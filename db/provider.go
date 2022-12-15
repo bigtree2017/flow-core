@@ -3,9 +3,9 @@ package db
 import (
 	"errors"
 	"fmt"
-	"github.com/qit-team/snow-core/config"
-	"github.com/qit-team/snow-core/helper"
-	"github.com/qit-team/snow-core/kernel/container"
+	"github.com/bigtree8/flow-core/config"
+	"github.com/bigtree8/flow-core/helper"
+	"github.com/bigtree8/flow-core/kernel/container"
 	"sync"
 	"xorm.io/xorm"
 )
@@ -56,7 +56,7 @@ func (p *provider) Register(args ...interface{}) (err error) {
 	return
 }
 
-//注册过的别名
+// 注册过的别名
 func (p *provider) Provides() []string {
 	p.mu.RLock()
 	defer p.mu.RUnlock()
@@ -64,7 +64,7 @@ func (p *provider) Provides() []string {
 	return helper.MapToArray(p.mp)
 }
 
-//释放资源
+// 释放资源
 func (p *provider) Close() error {
 	arr := p.Provides()
 	for _, k := range arr {
@@ -76,7 +76,7 @@ func (p *provider) Close() error {
 	return nil
 }
 
-//注入单例
+// 注入单例
 func setSingleton(diName string, conf config.DbConfig) (ins *xorm.EngineGroup, err error) {
 	ins, err = NewEngineGroup(conf)
 	if err == nil {
@@ -85,7 +85,7 @@ func setSingleton(diName string, conf config.DbConfig) (ins *xorm.EngineGroup, e
 	return
 }
 
-//获取单例
+// 获取单例
 func getSingleton(diName string, lazy bool) *xorm.EngineGroup {
 	rc := container.App.GetSingleton(diName)
 	if rc != nil {
@@ -109,7 +109,7 @@ func getSingleton(diName string, lazy bool) *xorm.EngineGroup {
 	return ins
 }
 
-//外部通过注入别名获取资源，解耦资源的关系
+// 外部通过注入别名获取资源，解耦资源的关系
 func GetDb(args ...string) *xorm.EngineGroup {
 	diName := helper.GetDiName(Pr.dn, args...)
 	return getSingleton(diName, true)

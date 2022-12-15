@@ -1,8 +1,8 @@
 package middleware
 
 import (
+	"github.com/bigtree8/flow-core/utils"
 	"github.com/gin-gonic/gin"
-	"github.com/qit-team/snow-core/utils"
 )
 
 func GenRequestId(c *gin.Context) {

@@ -4,8 +4,8 @@ import (
 	"context"
 	"crypto/md5"
 	"fmt"
+	"github.com/bigtree8/flow-core/utils"
 	"github.com/gin-gonic/gin"
-	"github.com/qit-team/snow-core/utils"
 	"strings"
 )
 
@@ -109,7 +109,7 @@ func GetHost(ctx context.Context) string {
 	return s
 }
 
-//var once sync.Once
+// GenerateTraceId var once sync.Once
 func GenerateTraceId(ctx context.Context) (string, context.Context) {
 	randomId := utils.GenUUID()
 	mdTemp := md5.Sum([]byte(randomId))

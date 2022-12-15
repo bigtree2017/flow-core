@@ -2,8 +2,8 @@ package cache
 
 import (
 	"context"
-	"github.com/qit-team/snow-core/redis"
-	"github.com/qit-team/snow-core/utils"
+	"github.com/bigtree8/flow-core/redis"
+	"github.com/bigtree8/flow-core/utils"
 )
 
 const (
@@ -13,7 +13,7 @@ const (
 	DefaultTTL        = 86400 //默认缓存时间
 )
 
-//缓存基类
+// 缓存基类
 type BaseCache struct {
 	cache      Cache
 	DiName     string //缓存依赖的实例别名
@@ -23,12 +23,12 @@ type BaseCache struct {
 	ttlIsSet   bool   //避免TTL被设置过为0时，仍使用默认值的情况
 }
 
-//补全key
+// 补全key
 func (m *BaseCache) key(key string) string {
 	return m.Prefix + key
 }
 
-//批量补全
+// 批量补全
 func (m *BaseCache) keys(keys ...string) []string {
 	arr := make([]string, len(keys))
 	for i, key := range keys {
@@ -37,7 +37,7 @@ func (m *BaseCache) keys(keys ...string) []string {
 	return arr
 }
 
-//去除前缀
+// 去除前缀
 func (m *BaseCache) removePrefix(key string) string {
 	l := len(m.Prefix)
 	return utils.Substr(key, l, len(key)-l)
@@ -151,7 +151,7 @@ func (m *BaseCache) DecrBy(ctx context.Context, key string, value int64) (int64,
 	return m.GetCache().DecrBy(ctx, key, value)
 }
 
-//获取缓存类
+// 获取缓存类
 func (m *BaseCache) GetCache() Cache {
 	//不使用once.Done是因为会有多种cache实例
 	diName := m.GetDiNameOrDefault()

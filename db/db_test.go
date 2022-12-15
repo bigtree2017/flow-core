@@ -2,7 +2,7 @@ package db
 
 import (
 	"fmt"
-	"github.com/qit-team/snow-core/config"
+	"github.com/bigtree8/flow-core/config"
 	"testing"
 	"xorm.io/xorm"
 	//go test时需要开启

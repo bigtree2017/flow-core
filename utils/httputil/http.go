@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/qit-team/snow-core/http/ctxkit"
-	"github.com/qit-team/snow-core/utils"
+	"github.com/bigtree8/flow-core/http/ctxkit"
+	"github.com/bigtree8/flow-core/utils"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -35,7 +35,7 @@ func NewClient(timeout time.Duration) Client {
 	}
 }
 
-//发送请求
+// 发送请求
 func (c *myClient) Do(ctx context.Context, req *http.Request) (resp *http.Response, err error) {
 	//将ctx中的traceid放在header中向下传递
 	SetTraceIdInHeader(ctx, req)
@@ -96,7 +96,7 @@ func NewGetRequest(url string, params map[string]interface{}, args ...interface{
 	return
 }
 
-//表单POST Request对象
+// 表单POST Request对象
 func NewFormPostRequest(url string, params map[string]interface{}, args ...interface{}) (req *http.Request, err error) {
 	var paramStr string
 	if params != nil {
@@ -116,7 +116,7 @@ func NewFormPostRequest(url string, params map[string]interface{}, args ...inter
 	return
 }
 
-//JSON POST Request对象
+// JSON POST Request对象
 func NewJsonPostRequest(url string, params map[string]interface{}, args ...interface{}) (req *http.Request, err error) {
 	var paramStr string
 	if params != nil {
@@ -190,14 +190,14 @@ func Request(ctx context.Context, method string, url string, params map[string]i
 	return
 }
 
-//处理返回结果
+// 处理返回结果
 func DealResponse(resp *http.Response) (body []byte, err error) {
 	defer resp.Body.Close()
 	body, err = ioutil.ReadAll(resp.Body)
 	return
 }
 
-//设置请求头
+// 设置请求头
 func SetHeaders(req *http.Request, headers interface{}) {
 	switch headers.(type) {
 	case map[string]string:
@@ -229,7 +229,7 @@ func StringListToMap(strArr []string) map[string]interface{} {
 	return m
 }
 
-//options
+// options
 func getOptions(args ...interface{}) (options map[string]interface{}) {
 	if len(args) > 1 {
 		options, _ = args[1].(map[string]interface{})
@@ -240,7 +240,7 @@ func getOptions(args ...interface{}) (options map[string]interface{}) {
 	return
 }
 
-//timeout
+// timeout
 func getTimeout(args ...interface{}) time.Duration {
 	options := getOptions(args...)
 	var timeout int

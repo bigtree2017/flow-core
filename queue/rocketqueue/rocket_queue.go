@@ -13,10 +13,10 @@ import (
 	"github.com/apache/rocketmq-client-go/v2"
 	"github.com/apache/rocketmq-client-go/v2/consumer"
 	"github.com/apache/rocketmq-client-go/v2/primitive"
+	"github.com/bigtree8/flow-core/log/logger"
+	"github.com/bigtree8/flow-core/queue"
+	rkmq "github.com/bigtree8/flow-core/rocketmq"
 	"github.com/gogap/errors"
-	"github.com/qit-team/snow-core/log/logger"
-	"github.com/qit-team/snow-core/queue"
-	rkmq "github.com/qit-team/snow-core/rocketmq"
 )
 
 var (
@@ -116,7 +116,7 @@ func (rq *RocketQueue) initConsumer(ctx context.Context, topic, messageTag strin
 	return nil
 }
 
-//new实例
+// new实例
 func newRocketQueue(diName string) queue.Queue {
 	m := new(RocketQueue)
 	client := rkmq.GetRocketMq(diName)
@@ -127,7 +127,7 @@ func newRocketQueue(diName string) queue.Queue {
 	return m
 }
 
-//单例模式
+// 单例模式
 func GetRocketQueue(diName string) queue.Queue {
 	key := diName
 	mu.RLock()

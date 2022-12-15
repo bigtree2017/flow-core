@@ -3,9 +3,9 @@ package redisqueue
 import (
 	"context"
 	"errors"
+	"github.com/bigtree8/flow-core/queue"
+	"github.com/bigtree8/flow-core/redis"
 	goredis "github.com/go-redis/redis/v8"
-	"github.com/qit-team/snow-core/queue"
-	"github.com/qit-team/snow-core/redis"
 	"sync"
 )
 
@@ -18,14 +18,14 @@ type RedisQueue struct {
 	client *goredis.Client
 }
 
-//new实例
+// new实例
 func newRedisQueue(diName string) queue.Queue {
 	m := new(RedisQueue)
 	m.client = redis.GetRedis(diName)
 	return m
 }
 
-//单例模式
+// 单例模式
 func GetRedisQueue(diName string) queue.Queue {
 	key := diName
 	mu.RLock()

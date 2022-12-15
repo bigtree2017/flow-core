@@ -8,10 +8,10 @@ import (
 	"github.com/apache/rocketmq-client-go/v2/consumer"
 	"github.com/apache/rocketmq-client-go/v2/primitive"
 	"github.com/apache/rocketmq-client-go/v2/producer"
-	"github.com/qit-team/snow-core/config"
+	"github.com/bigtree8/flow-core/config"
 )
 
-//依赖注入用的函数
+// 依赖注入用的函数
 func NewRocketMqClient(mqConfig config.RocketMqConfig) (client *RocketClient, err error) {
 	// 初始化aliyunmq的 client
 	defer func() {

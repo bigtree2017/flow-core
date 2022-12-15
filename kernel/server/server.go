@@ -3,7 +3,7 @@ package server
 import (
 	"bufio"
 	"fmt"
-	"github.com/qit-team/snow-core/kernel/close"
+	"github.com/bigtree8/flow-core/kernel/close"
 	"os"
 	"os/signal"
 	"strconv"
@@ -29,7 +29,7 @@ func init() {
 	srv.stop = make(chan bool, 0)
 }
 
-//将进程号写入文件
+// 将进程号写入文件
 func WritePidFile(path string, pidArgs ...int) error {
 	fd, err := os.Create(path)
 	if err != nil {
@@ -47,7 +47,7 @@ func WritePidFile(path string, pidArgs ...int) error {
 	return err
 }
 
-//读取文件的进程号
+// 读取文件的进程号
 func ReadPidFile(path string) (int, error) {
 	fd, err := os.Open(path)
 	if err != nil {
@@ -64,12 +64,12 @@ func ReadPidFile(path string) (int, error) {
 	return strconv.Atoi(line)
 }
 
-//阻塞等待程序内部的Stop通道信号
+// 阻塞等待程序内部的Stop通道信号
 func WaitStop() {
 	<-srv.stop
 }
 
-//关闭服务
+// 关闭服务
 func CloseService() {
 	if srv.debug {
 		fmt.Println("close service")
@@ -77,7 +77,7 @@ func CloseService() {
 	close.Free()
 }
 
-//处理进程的信号量
+// 处理进程的信号量
 func HandleSignal(sig os.Signal) {
 	switch sig {
 	case syscall.SIGINT:
@@ -88,7 +88,7 @@ func HandleSignal(sig os.Signal) {
 	}
 }
 
-//监听信号量
+// 监听信号量
 func RegisterSignal() {
 	go func() {
 		var sigs = []os.Signal{

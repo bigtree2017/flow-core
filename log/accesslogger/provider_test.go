@@ -1,7 +1,7 @@
 package accesslogger
 
 import (
-	"github.com/qit-team/snow-core/config"
+	"github.com/bigtree8/flow-core/config"
 	"testing"
 )
 

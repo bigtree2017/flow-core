@@ -1,8 +1,8 @@
 package server
 
 import (
+	"github.com/bigtree8/flow-core/config"
 	"github.com/gin-gonic/gin"
-	"github.com/qit-team/snow-core/config"
 
 	"fmt"
 	"go/build"
@@ -29,7 +29,7 @@ func TestStartHttp(t *testing.T) {
 	StartHttp(pidFile, apiConf, RegisterRoute)
 }
 
-//api路由配置
+// api路由配置
 func RegisterRoute(router *gin.Engine) {
 	router.GET("/hello", HandleHello)
 }

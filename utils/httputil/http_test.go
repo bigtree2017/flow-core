@@ -3,8 +3,8 @@ package httputil
 import (
 	"context"
 	"encoding/json"
+	"github.com/bigtree8/flow-core/http/ctxkit"
 	"github.com/gin-gonic/gin"
-	"github.com/qit-team/snow-core/http/ctxkit"
 	"testing"
 	"time"
 )
@@ -23,19 +23,21 @@ func init() {
 	c = &gin.Context{}
 }
 
-/**
+/*
+*
 <?php
-  $data = [
-    "code" => 200,
-    "message" => "ok",
-    "data" => [
-        "type" => $_SERVER['CONTENT_TYPE'],
-        "post" => $_POST,
-        "get" => $_GET,
-        "input" => file_get_contents("php://input")
-    ]
-  ];
-  echo json_encode($data);
+
+	$data = [
+	  "code" => 200,
+	  "message" => "ok",
+	  "data" => [
+	      "type" => $_SERVER['CONTENT_TYPE'],
+	      "post" => $_POST,
+	      "get" => $_GET,
+	      "input" => file_get_contents("php://input")
+	  ]
+	];
+	echo json_encode($data);
 */
 func TestDoGet(t *testing.T) {
 	url := "http://localhost:8080/hello"

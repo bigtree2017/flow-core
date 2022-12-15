@@ -7,7 +7,7 @@ import (
 	//_ "github.com/denisenkom/go-mssqldb" //mssql
 	"errors"
 	"fmt"
-	"github.com/qit-team/snow-core/config"
+	"github.com/bigtree8/flow-core/config"
 	"time"
 	"xorm.io/core"
 	"xorm.io/xorm"
@@ -80,7 +80,7 @@ func formatDSN(driver string, base config.DbBaseConfig, option config.DbOptionCo
 	return ""
 }
 
-//Mysql DSN
+// Mysql DSN
 func formatMysqlDSN(base config.DbBaseConfig, option config.DbOptionConfig) string {
 	port := getPortOrDefault(base.Port, 3306)
 	charset := option.Charset
@@ -95,19 +95,19 @@ func formatMysqlDSN(base config.DbBaseConfig, option config.DbOptionConfig) stri
 		base.User, base.Password, base.Host, port, base.DBName, timeout, charset)
 }
 
-//PostgreSQL DSN
+// PostgresSQL DSN
 func formatPostgresDSN(base config.DbBaseConfig, option config.DbOptionConfig) string {
 	port := getPortOrDefault(base.Port, 5432)
 	return fmt.Sprintf("host=%s port=%d user=%s dbname=%s password=%s",
 		base.Host, port, base.User, base.DBName, base.Password)
 }
 
-//qlite3 DSN
+// sqlite3 DSN
 func formatSqlite3DSN(base config.DbBaseConfig, option config.DbOptionConfig) string {
 	return base.DBName
 }
 
-//SQL Server DSN
+// SQL Server DSN
 func formatMssqlDSN(base config.DbBaseConfig, option config.DbOptionConfig) string {
 	port := getPortOrDefault(base.Port, 1433)
 	return fmt.Sprintf("sqlserver://%s:%s@%s:%d?database=%s",

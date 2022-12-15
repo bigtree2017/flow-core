@@ -3,10 +3,10 @@ package accesslogger
 import (
 	"errors"
 	"fmt"
+	"github.com/bigtree8/flow-core/config"
+	"github.com/bigtree8/flow-core/helper"
+	"github.com/bigtree8/flow-core/kernel/container"
 	"github.com/hetiansu5/accesslog"
-	"github.com/qit-team/snow-core/config"
-	"github.com/qit-team/snow-core/helper"
-	"github.com/qit-team/snow-core/kernel/container"
 	"sync"
 )
 
@@ -65,7 +65,7 @@ func (p *provider) Close() error {
 	return nil
 }
 
-//注入单例
+// 注入单例
 func setSingleton(diName string, conf config.LogConfig) (ins *accesslog.AccessLogger, err error) {
 	ins, err = InitAccessLog(conf.Handler, conf.Dir)
 	if err == nil {
@@ -74,7 +74,7 @@ func setSingleton(diName string, conf config.LogConfig) (ins *accesslog.AccessLo
 	return
 }
 
-//获取单例
+// 获取单例
 func getSingleton(diName string, lazy bool) *accesslog.AccessLogger {
 	rc := container.App.GetSingleton(diName)
 	if rc != nil {
@@ -98,7 +98,7 @@ func getSingleton(diName string, lazy bool) *accesslog.AccessLogger {
 	return ins
 }
 
-//外部通过注入别名获取资源，解耦资源的关系
+// 外部通过注入别名获取资源，解耦资源的关系
 func GetAccessLogger(args ...string) *accesslog.AccessLogger {
 	diName := helper.GetDiName(Pr.dn, args...)
 	return getSingleton(diName, true)

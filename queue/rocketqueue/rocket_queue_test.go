@@ -3,15 +3,15 @@ package rocketqueue
 import (
 	"context"
 	"fmt"
-	"github.com/qit-team/snow-core/log/logger"
+	"github.com/bigtree8/flow-core/log/logger"
 	"io/ioutil"
 	"log"
 	"strings"
 	"testing"
 
-	"github.com/qit-team/snow-core/config"
-	"github.com/qit-team/snow-core/queue"
-	"github.com/qit-team/snow-core/rocketmq"
+	"github.com/bigtree8/flow-core/config"
+	"github.com/bigtree8/flow-core/queue"
+	"github.com/bigtree8/flow-core/rocketmq"
 )
 
 var q queue.Queue

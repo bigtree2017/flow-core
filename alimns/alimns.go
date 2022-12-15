@@ -4,10 +4,10 @@ import (
 	"errors"
 	"fmt"
 	"github.com/aliyun/aliyun-mns-go-sdk"
-	"github.com/qit-team/snow-core/config"
+	"github.com/bigtree8/flow-core/config"
 )
 
-//依赖注入用的函数
+// 依赖注入用的函数
 func NewMnsClient(mnsConfig config.MnsConfig) (client ali_mns.MNSClient, err error) {
 	//2.1初始化mns client
 	defer func() {

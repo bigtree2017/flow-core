@@ -7,8 +7,8 @@ import (
 	"sync"
 
 	ali_mns "github.com/aliyun/aliyun-mns-go-sdk"
-	"github.com/qit-team/snow-core/alimns"
-	"github.com/qit-team/snow-core/queue"
+	"github.com/bigtree8/flow-core/alimns"
+	"github.com/bigtree8/flow-core/queue"
 )
 
 const (
@@ -24,14 +24,14 @@ type MnsQueue struct {
 	client ali_mns.MNSClient
 }
 
-//new实例
+// new实例
 func newMnsQueue(diName string) queue.Queue {
 	m := new(MnsQueue)
 	m.client = alimns.GetMns(diName)
 	return m
 }
 
-//单例模式
+// 单例模式
 func GetMnsQueue(diName string) queue.Queue {
 	key := diName
 	mu.RLock()
@@ -156,7 +156,7 @@ func (m *MnsQueue) AckMsg(ctx context.Context, key string, token string, args ..
 	return true, nil
 }
 
-//入队参数
+// 入队参数
 func getOption(args ...interface{}) (delay int64, priority int64) {
 	delay = 0
 	priority = 1
